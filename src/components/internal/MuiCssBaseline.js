@@ -1,6 +1,9 @@
 const overrides = {
   styleOverrides: (theme) => `
     /* Include font files here. */
+
+    /*  Don't forget to uncomment the @font-face below ! ! !*/
+
     /*
     @font-face {
       font-family: 'Family';
@@ -9,6 +12,8 @@ const overrides = {
       src: url('/fonts/family/family-regular.woff2') format('woff2');
     }
     */
+
+
     /* Define :root css variables. */
     :root {
       --cia-theme-spacing: ${theme.spacing(1)};

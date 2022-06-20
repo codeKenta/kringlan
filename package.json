@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "setup": "yarn install && cd sanity && yarn install",
     "release": "standard-version",
     "dev": "next",
     "prebuild": "echo 'Building Sanity to public/admin' && cd sanity && yarn && npx @sanity/cli build ../public/admin -y && echo 'Done'",
