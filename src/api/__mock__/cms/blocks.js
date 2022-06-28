@@ -65,4 +65,19 @@ export default {
       <h6>Header Level 6</h6>
     `,
   },
+  TompasBlock: {
+    heading: '[TompasBlock]',
+    text: 'Ska du ha en stänkare?',
+    ctaPrimary: {
+      url: '/',
+      label: 'Ja',
+    },
+    mediaProps: {
+      component: 'picture',
+      breakpoints: {
+        xs: '//https://picsum.photos/1280/720',
+        sm: '//https://picsum.photos/1920/1080',
+      },
+    },
+  },
 }
