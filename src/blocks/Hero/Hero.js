@@ -1,9 +1,9 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from '@mui/system'
-import { Button } from '@mui/material'
+import { Button, Typography } from '@mui/material'
 import { Media, MediaReveal } from '@noaignite/oui'
-import { RouterLink, SanityHtml } from '~/containers'
+import { RouterLink } from '~/containers'
 import { linkType, mediaType } from '~/api/utils'
 
 const HeroRoot = styled('section', {
@@ -48,9 +48,12 @@ const HeroHeading = styled('h1', {
   name: 'Hero',
   slot: 'Heading',
 })(({ theme }) => ({
-  ...theme.typography.h3,
+  ...theme.typography.h2,
   margin: 0,
-  fontSize: `max(${theme.typography.h3.fontSize}, 3.2vw)`,
+  fontSize: `max(${theme.typography.h2.fontSize}, 3.2vw)`,
+  textTransform: 'uppercase',
+  fontWeight: '700',
+  lineHeigth: '32px',
 }))
 
 const HeroButton = styled(Button, {
@@ -63,6 +66,8 @@ const HeroButton = styled(Button, {
     ...theme.mixins.absolute(0),
     content: '""',
   },
+  margin: '0 20px',
+  borderRadius: '8px',
 }))
 
 function Hero(props) {
@@ -90,14 +95,30 @@ function Hero(props) {
       <HeroMain>
         <HeroHeading>{heading}</HeroHeading>
 
-        {excerpt && <SanityHtml textBlocks={excerpt} />}
+        {excerpt && (
+          // Typography instead because SanityHTML does not work (?)
+          <Typography
+            variant="h3"
+            component="h2"
+            align="center"
+            mt={5}
+            sx={{ lineHeight: '60px', fontWeight: '400', fontSize: '40px' }}
+          >
+            {excerpt}
+          </Typography>
+        )}
+        <br />
 
         {ctaPrimary && ctaPrimary.url && ctaPrimary.label && (
           <HeroButton
             component={RouterLink}
             href={ctaPrimary.url}
-            color="inherit"
-            variant="outlined"
+            variant="contained"
+            sx={{
+              // Testing purposes, dont be alarmed.
+              backgroundColor: '#000',
+              fontWeight: 'bolder',
+            }}
           >
             {ctaPrimary.label}
           </HeroButton>
@@ -107,8 +128,14 @@ function Hero(props) {
           <HeroButton
             component={RouterLink}
             href={ctaSecondary.url}
-            color="inherit"
-            variant="outlined"
+            variant="contained"
+            sx={{
+              // Testing purposes, dont be alarmed.
+              backgroundColor: '#fff',
+              color: '#000',
+              fontWeight: 'bolder',
+              borderWidth: '0',
+            }}
           >
             {ctaSecondary.label}
           </HeroButton>
