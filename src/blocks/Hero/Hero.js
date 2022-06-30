@@ -53,7 +53,6 @@ const HeroHeading = styled('h1', {
   fontSize: `max(${theme.typography.h2.fontSize}, 3.2vw)`,
   textTransform: 'uppercase',
   fontWeight: '700',
-  lineHeigth: '32px',
 }))
 
 const HeroButton = styled(Button, {
