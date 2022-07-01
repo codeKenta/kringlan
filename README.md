@@ -1,7 +1,9 @@
 # next-sanity-starter
 
 
-## 
+##  Workflow
+Checkout a new branch for the feature with git checkout -b feature/$issueNumber-$branchName
+*Example: git checkout -b feature/4-workflow*
 
 ## Add fonts
 1. Add font files to _/public/fonts_ (recomended font format is .woff2)
