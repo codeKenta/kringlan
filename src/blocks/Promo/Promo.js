@@ -30,36 +30,55 @@ const PromoMain = styled('div', {
 }))
 
 function Promo(props) {
-  const { name, description, race, type, avatar, aligncontent } = props
+  const { name, description, subtitle, imageSrc, alignContent, imageCircle } = props
 
   return (
     <PromoRoot>
       <PromoMain>
         <Card sx={{ display: 'flex', background: '#E9E9E9' }}>
-          {aligncontent !== 'left' && (
+          {alignContent !== 'left' && (
             <CardMedia
               component="img"
+              image={imageSrc}
+              alt={name}
               sx={{
                 width: '300px',
+                clipPath: () => {
+                  if (imageCircle) {
+                    return 'circle()'
+                  }
+                  return 0
+                },
               }}
-              image={avatar}
-              alt="Avatar"
             />
           )}
 
           <Box sx={{ display: 'flex', flexDirection: 'column' }}>
             <CardContent sx={{ flex: '1 0 auto', padding: '10%' }}>
-              <Typography variant="h3" component="h1" gutterBottom sx={{ fontWeight: '700' }}>
+              <Typography variant="h3" component="h1" gutterBottom>
                 {name}
               </Typography>
               <Typography variant="subtitle" paragraph>
-                {race} / {type}
+                {subtitle}
               </Typography>
-              <p>{description}</p>
+              <Typography>{description}</Typography>
             </CardContent>
           </Box>
-          {aligncontent !== 'right' && (
-            <CardMedia component="img" sx={{ width: '300px' }} image={avatar} alt="Avatar" />
+          {alignContent !== 'right' && (
+            <CardMedia
+              component="img"
+              image={imageSrc}
+              alt={name}
+              sx={{
+                width: '300px',
+                clipPath: () => {
+                  if (imageCircle) {
+                    return 'circle()'
+                  }
+                  return 0
+                },
+              }}
+            />
           )}
         </Card>
       </PromoMain>
@@ -68,12 +87,12 @@ function Promo(props) {
 }
 
 Promo.propTypes = {
-  aligncontent: PropTypes.string,
+  alignContent: PropTypes.string,
+  imageCircle: PropTypes.bool,
   name: PropTypes.string,
+  subtitle: PropTypes.string,
   description: PropTypes.string,
-  race: PropTypes.string,
-  type: PropTypes.string,
-  avatar: PropTypes.string,
+  imageSrc: PropTypes.string,
 }
 
 export default Promo

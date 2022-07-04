@@ -7,7 +7,7 @@ export default {
   title: 'Blocks/Promo',
   component: Promo,
   argTypes: {
-    aligncontent: storySelectArgType(['left', 'right']),
+    alignContent: storySelectArgType(['left', 'right']),
   },
 }
 
