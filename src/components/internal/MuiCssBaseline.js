@@ -1,17 +1,130 @@
 const overrides = {
   styleOverrides: (theme) => `
     /* Include font files here. */
-
     /*  Don't forget to uncomment the @font-face below ! ! !*/
 
-    /*
+
+    /* BENGUIAT */
     @font-face {
-      font-family: 'Family';
-      font-weight: 400;
-      font-display: swap;
-      src: url('/fonts/family/family-regular.woff2') format('woff2');
+      font-family: 'Benguiat Std';
+      font-style: book;
+      font-weight: 350;
+      src: local(''),
+           url('~/fonts/BenguiatStd-Book.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+
     }
-    */
+    @font-face {
+      font-family: 'Benguiat Std';
+      font-style: medium;
+      font-weight: 500;
+      src: local(''),
+           url('~/public/fonts/BenguiatStd-Medium.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+
+    }
+    @font-face {
+      font-family: 'Benguiat Std';
+      font-style: bold;
+      font-weight: 700;
+      src: local(''),
+           url('~/public/fonts/BenguiatStd-Bold.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+
+    }
+
+   /* ROBOTO */
+
+    /* roboto-regular - latin */
+    @font-face {
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 400;
+      src: local(''),
+          url('~/public/fonts/Roboto-Regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+
+    }
+
+    /* roboto-500 - latin */
+    @font-face {
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 500;
+      src: local(''),
+          url('~/public/fonts/Roboto-Medium.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+
+    }
+
+    /* roboto-700 - latin */
+    @font-face {
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 700;
+      src: local(''),
+          url('~/public/fonts/Roboto-Bold.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+
+    }
+
+        /* CRIMSON TEXT */
+
+    /* crimson-text-regular - latin */
+    @font-face {
+      font-family: 'Crimson Text';
+      font-style: normal;
+      font-weight: 400;
+      src: local(''),
+          url('~/public/fonts/CrimsonText/CrimsonText-Regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+
+    }
+
+    /* crimson-text-600 - latin */
+    @font-face {
+      font-family: 'Crimson Text';
+      font-style: normal;
+      font-weight: 600;
+      src: local(''),
+          url('~/public/fonts/CrimsonText/CrimsonText-SemiBold.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+
+    }
+
+    /* crimson-text-italic - latin */
+    @font-face {
+      font-family: 'Crimson Text';
+      font-style: italic;
+      font-weight: 400;
+      src: local(''),
+          url('~/public/fonts/CrimsonText/CrimsonText-Italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+
+    }
+
+    /* crimson-text-600italic - latin */
+    @font-face {
+      font-family: 'Crimson Text';
+      font-style: italic;
+      font-weight: 600;
+      src: local(''),
+          url('~/public/fonts/CrimsonText/CrimsonText-SemiBoldItalic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+
+    }
+
+    /* crimson-text-700 - latin */
+    @font-face {
+      font-family: 'Crimson Text';
+      font-style: normal;
+      font-weight: 700;
+      src: local(''),
+          url('~/public/fonts/CrimsonText/CrimsonText-Bold.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+
+    }
+
+    /* crimson-text-700italic - latin */
+    @font-face {
+      font-family: 'Crimson Text';
+      font-style: italic;
+      font-weight: 700;
+      src: local(''),
+          url('~/public/fonts/CrimsonText/CrimsonText-BoldItalic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+
+    }
+
+
 
 
     /* Define :root css variables. */

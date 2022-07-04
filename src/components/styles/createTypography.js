@@ -6,8 +6,8 @@ const caseAllCaps = {
 
 export default function createTypography(palette, typography) {
   const {
-    fontFamilyPrimary = '"Helvetica", "Arial", sans-serif',
-    fontFamilySecondary = fontFamilyPrimary,
+    fontFamilyPrimary = '"Crimson Text", "Times New Roman", serif',
+    fontFamilySecondary = '"Benguiat", "Arial", sans-serif',
     // The default font size of the Material Specification.
     fontSize = 14, // px
     fontWeightLight = 300,
