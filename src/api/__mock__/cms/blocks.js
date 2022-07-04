@@ -74,4 +74,9 @@ export default {
       <h6>Header Level 6</h6>
     `,
   },
+  TitleHero: {
+    heading: 'The Hooded Bandits',
+    subtitle: 'SESSION II',
+    textColor: '#C90000',
+  },
 }
