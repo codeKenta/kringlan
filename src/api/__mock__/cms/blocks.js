@@ -15,6 +15,15 @@ export default {
       url: '/foo',
     })),
   },
+  Promo: {
+    alignContent: 'left',
+    imageCircle: false,
+    name: 'Oldrin Maclorion',
+    imageSrc: 'https://picsum.photos/400/600',
+    description: `It is normally played indoors with the participants seated around a tabletop. A typical Dungeons & Dragons game consists of an "adventure" in a fantasy world or "campaign setting". Typically, each player controls only a single character. The results of the characters' choices and the overall storyline for the game are determined by the Dungeon Master (DM) according to the rules of the game and the DM's interpretation of those rules. `, // prettier-ignore
+    subtitle: 'Dwarf / Cleric',
+  },
+
   Media: {
     mediaProps: {
       component: 'picture',
