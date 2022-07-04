@@ -1,7 +1,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from '@mui/system'
-import { Button, Typography } from '@mui/material'
+import { Button } from '@mui/material'
 import { Media, MediaReveal } from '@noaignite/oui'
 import { RouterLink } from '~/containers'
 import { linkType, mediaType } from '~/api/utils'
@@ -39,7 +39,7 @@ const HeroMain = styled('div', {
   slot: 'Main',
 })(({ theme }) => ({
   ...theme.mixins.verticalRhythm(2),
-  ...theme.mixins.contain('sm'),
+  ...theme.mixins.contain('md'),
   paddingLeft: 'var(--cia-container-spacing)',
   paddingRight: 'var(--cia-container-spacing)',
 }))
@@ -48,11 +48,20 @@ const HeroHeading = styled('h1', {
   name: 'Hero',
   slot: 'Heading',
 })(({ theme }) => ({
-  ...theme.typography.h2,
+  ...theme.typography.h1,
   margin: 0,
-  fontSize: `max(${theme.typography.h2.fontSize}, 3.2vw)`,
   textTransform: 'uppercase',
   fontWeight: '700',
+}))
+
+const HeroExcerpt = styled('p', {
+  name: 'Hero',
+  slot: 'Excerpt',
+})(({ theme }) => ({
+  ...theme.typography.h3,
+  ...theme.mixins.contain('sm'),
+  padding: theme.spacing(2.5),
+  lineHeight: '60px',
 }))
 
 const HeroButton = styled(Button, {
@@ -65,7 +74,7 @@ const HeroButton = styled(Button, {
     ...theme.mixins.absolute(0),
     content: '""',
   },
-  margin: '0 20px',
+  margin: theme.spacing(0, 2.5),
   borderRadius: '8px',
 }))
 
@@ -94,19 +103,7 @@ function Hero(props) {
       <HeroMain>
         <HeroHeading>{heading}</HeroHeading>
 
-        {excerpt && (
-          // Typography instead because SanityHTML does not work (?)
-          <Typography
-            variant="h3"
-            component="h2"
-            align="center"
-            mt={5}
-            sx={{ lineHeight: '60px', fontWeight: '400', fontSize: '40px' }}
-          >
-            {excerpt}
-          </Typography>
-        )}
-        <br />
+        {excerpt && <HeroExcerpt>{excerpt}</HeroExcerpt>}
 
         {ctaPrimary && ctaPrimary.url && ctaPrimary.label && (
           <HeroButton
