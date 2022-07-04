@@ -30,7 +30,6 @@ const TitleHeroMain = styled('div', {
   paddingLeft: 'var(--cia-container-spacing)',
   paddingRight: 'var(--cia-container-spacing)',
   textAlign: 'center',
-  wordSpacing: '<parent-width>',
 }))
 
 const TitleHeroHeading = styled('h1', {
