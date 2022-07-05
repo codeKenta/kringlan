@@ -9,21 +9,21 @@ const overrides = {
       font-family: 'Benguiat Std';
       font-style: book;
       font-weight: 350;
-      src: local(''), url('/fonts/BenguiatStd-Book.woff2') format('woff2'); /* Chrome 26+, Opera 23+, Firefox 39+ */
+      src: local(''), url('/fonts/Benguiat/BenguiatStd-Book.woff2') format('woff2'); /* Chrome 26+, Opera 23+, Firefox 39+ */
 
     }
     @font-face {
       font-family: 'Benguiat Std';
       font-style: medium;
       font-weight: 500;
-      src: local(''), url('/fonts/BenguiatStd-Medium.woff2') format('woff2'); /* Chrome 26+, Opera 23+, Firefox 39+ */
+      src: local(''), url('/fonts/Benguiat/BenguiatStd-Medium.woff2') format('woff2'); /* Chrome 26+, Opera 23+, Firefox 39+ */
 
     }
     @font-face {
       font-family: 'Benguiat Std';
       font-style: bold;
       font-weight: 700;
-      src: local(''), url('/fonts/BenguiatStd-Bold.woff2') format('woff2'); /* Chrome 26+, Opera 23+, Firefox 39+ */
+      src: local(''), url('/fonts/Benguiat/BenguiatStd-Bold.woff2') format('woff2'); /* Chrome 26+, Opera 23+, Firefox 39+ */
 
     }
 
