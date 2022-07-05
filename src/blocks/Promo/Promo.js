@@ -36,7 +36,7 @@ function Promo(props) {
     <PromoRoot>
       <PromoMain>
         <Card sx={{ display: 'flex', background: '#E9E9E9' }}>
-          {alignContent !== 'left' && (
+          {alignContent === 'right' && (
             <CardMedia
               component="img"
               image={imageSrc}
@@ -45,7 +45,7 @@ function Promo(props) {
                 width: '300px',
                 clipPath: () => {
                   if (imageCircle) {
-                    return 'circle()'
+                    return 'circle(100px at 50%)'
                   }
                   return 0
                 },
@@ -64,7 +64,7 @@ function Promo(props) {
               <Typography>{description}</Typography>
             </CardContent>
           </Box>
-          {alignContent !== 'right' && (
+          {alignContent === 'left' && (
             <CardMedia
               component="img"
               image={imageSrc}
@@ -73,7 +73,7 @@ function Promo(props) {
                 width: '300px',
                 clipPath: () => {
                   if (imageCircle) {
-                    return 'circle()'
+                    return 'circle(100px at 50%)'
                   }
                   return 0
                 },
