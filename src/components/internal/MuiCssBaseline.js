@@ -9,24 +9,21 @@ const overrides = {
       font-family: 'Benguiat Std';
       font-style: book;
       font-weight: 350;
-      src: local(''),
-           url('~/fonts/BenguiatStd-Book.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+      src: local(''), url('/fonts/BenguiatStd-Book.woff2') format('woff2'); /* Chrome 26+, Opera 23+, Firefox 39+ */
 
     }
     @font-face {
       font-family: 'Benguiat Std';
       font-style: medium;
       font-weight: 500;
-      src: local(''),
-           url('~/public/fonts/BenguiatStd-Medium.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+      src: local(''), url('/fonts/BenguiatStd-Medium.woff2') format('woff2'); /* Chrome 26+, Opera 23+, Firefox 39+ */
 
     }
     @font-face {
       font-family: 'Benguiat Std';
       font-style: bold;
       font-weight: 700;
-      src: local(''),
-           url('~/public/fonts/BenguiatStd-Bold.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+      src: local(''), url('/fonts/BenguiatStd-Bold.woff2') format('woff2'); /* Chrome 26+, Opera 23+, Firefox 39+ */
 
     }
 
@@ -37,90 +34,81 @@ const overrides = {
       font-family: 'Roboto';
       font-style: normal;
       font-weight: 400;
-      src: local(''),
-          url('~/public/fonts/Roboto-Regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+      src: local(''), url('/fonts/Roboto/Roboto-Regular.woff2') format('woff2'); /* Chrome 26+, Opera 23+, Firefox 39+ */
 
     }
 
-    /* roboto-500 - latin */
+    /* roboto-500 */
     @font-face {
       font-family: 'Roboto';
       font-style: normal;
       font-weight: 500;
-      src: local(''),
-          url('~/public/fonts/Roboto-Medium.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+      src: local(''), url('/fonts/Roboto/Roboto-Medium.woff2') format('woff2'); /* Chrome 26+, Opera 23+, Firefox 39+ */
 
     }
 
-    /* roboto-700 - latin */
+    /* roboto-700 */
     @font-face {
       font-family: 'Roboto';
       font-style: normal;
       font-weight: 700;
-      src: local(''),
-          url('~/public/fonts/Roboto-Bold.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+      src: local(''), url('/fonts/Roboto/Roboto-Bold.woff2') format('woff2'); /* Chrome 26+, Opera 23+, Firefox 39+ */
 
     }
 
-        /* CRIMSON TEXT */
+      /* CRIMSON TEXT */
 
-    /* crimson-text-regular - latin */
+    /* crimson-text-regular */
     @font-face {
       font-family: 'Crimson Text';
       font-style: normal;
       font-weight: 400;
-      src: local(''),
-          url('~/public/fonts/CrimsonText/CrimsonText-Regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+      src: local(''), url('/fonts/CrimsonText/CrimsonText-Regular.woff2') format('woff2'); /* Chrome 26+, Opera 23+, Firefox 39+ */
 
     }
 
-    /* crimson-text-600 - latin */
+    /* crimson-text-600 */
     @font-face {
       font-family: 'Crimson Text';
       font-style: normal;
       font-weight: 600;
-      src: local(''),
-          url('~/public/fonts/CrimsonText/CrimsonText-SemiBold.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+      src: local(''), url('/fonts/CrimsonText/CrimsonText-SemiBold.woff2') format('woff2'); /* Chrome 26+, Opera 23+, Firefox 39+ */
 
     }
 
-    /* crimson-text-italic - latin */
+    /* crimson-text-italic */
     @font-face {
       font-family: 'Crimson Text';
       font-style: italic;
       font-weight: 400;
-      src: local(''),
-          url('~/public/fonts/CrimsonText/CrimsonText-Italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+      src: local(''), url('/fonts/CrimsonText/CrimsonText-Italic.woff2') format('woff2'); /* Chrome 26+, Opera 23+, Firefox 39+ */
 
     }
 
-    /* crimson-text-600italic - latin */
+    /* crimson-text-600italic */
     @font-face {
       font-family: 'Crimson Text';
       font-style: italic;
       font-weight: 600;
-      src: local(''),
-          url('~/public/fonts/CrimsonText/CrimsonText-SemiBoldItalic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+      src: local(''), url('/fonts/CrimsonText/CrimsonText-SemiBoldItalic.woff2') format('woff2'); /* Chrome 26+, Opera 23+, Firefox 39+ */
 
     }
 
-    /* crimson-text-700 - latin */
+    /* crimson-text-700 */
     @font-face {
       font-family: 'Crimson Text';
       font-style: normal;
       font-weight: 700;
-      src: local(''),
-          url('~/public/fonts/CrimsonText/CrimsonText-Bold.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+      src: local(''), url('/fonts/CrimsonText/CrimsonText-Bold.woff2') format('woff2'); /* Chrome 26+, Opera 23+, Firefox 39+ */
 
     }
 
-    /* crimson-text-700italic - latin */
+    /* crimson-text-700italic */
     @font-face {
       font-family: 'Crimson Text';
       font-style: italic;
       font-weight: 700;
-      src: local(''),
-          url('~/public/fonts/CrimsonText/CrimsonText-BoldItalic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+      src: local(''), url('/fonts/CrimsonText/CrimsonText-BoldItalic.woff2') format('woff2'); /* Chrome 26+, Opera 23+, Firefox 39+ */
 
     }
 
