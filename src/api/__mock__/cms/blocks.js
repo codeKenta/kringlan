@@ -74,4 +74,7 @@ export default {
       <h6>Header Level 6</h6>
     `,
   },
+  SpecialSectionHeading: {
+    heading: 'EPICS',
+  },
 }
