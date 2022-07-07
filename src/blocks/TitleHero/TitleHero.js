@@ -13,11 +13,11 @@ const TitleHeroRoot = styled('section', {
   alignItems: 'center',
   justifyContent: 'center',
   minHeight: 550,
-  color: theme.palette.common.white, // Use `common.white` as color is based on image not theme mode.
+  color: theme.palette.common.white,
   [theme.breakpoints.up('md')]: {
     minHeight: 650,
   },
-  background: '#130101',
+  background: theme.palette.primary.dark,
 }))
 
 const TitleHeroMain = styled('div', {
@@ -25,31 +25,34 @@ const TitleHeroMain = styled('div', {
   slot: 'Main',
 })(({ theme }) => ({
   ...theme.mixins.verticalRhythm(2),
-  ...theme.mixins.contain('sm'),
+  ...theme.mixins.contain('md'),
   width: 'min-content',
   paddingLeft: 'var(--cia-container-spacing)',
   paddingRight: 'var(--cia-container-spacing)',
   textAlign: 'center',
 }))
 
-const TitleHeroHeading = styled('h1', {
-  name: 'TitleHeroHeading',
-  slot: 'Heading',
-})(() => ({
-  fontSize: '5rem',
-  lineHeight: '5rem',
-  fontWeight: 'bolder',
-}))
-
 function TitleHero(props) {
-  const { heading, subtitle, textColor } = props
+  const { heading, headingType = 'h3', subtitle, textColor } = props
 
   return (
     <TitleHeroRoot>
       <TitleHeroMain>
-        <TitleHeroHeading sx={{ color: textColor }}>{heading.toUpperCase()}</TitleHeroHeading>
+        <Typography
+          variant="h1"
+          component={headingType}
+          sx={(theme) => ({
+            color: !textColor ? 'text.secondary' : textColor,
+            lineHeight: '6.5rem',
+            fontFamily: theme.typography.fontFamilyTertiary,
+            fontSize: '7rem',
+            fontWeight: 'bold',
+          })}
+        >
+          {heading.toUpperCase()}
+        </Typography>
 
-        <Typography variant="h3" component="p">
+        <Typography variant="h3" paragraph>
           {subtitle}
         </Typography>
       </TitleHeroMain>
@@ -60,6 +63,7 @@ function TitleHero(props) {
 TitleHero.propTypes = {
   subtitle: PropTypes.string,
   heading: PropTypes.string,
+  headingType: PropTypes.string,
   textColor: PropTypes.string,
 }
 
