@@ -1,44 +1,49 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from '@mui/system'
+import { Typography } from '@mui/material'
+import useTheme from '@mui/material/styles/useTheme'
 
 const SpecialSectionRoot = styled('section', {
   name: 'SpecialSectionHeading',
   slot: 'Root',
-})(() => ({
+})(({ theme }) => ({
   position: 'relative',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
   minHeight: 222,
-  color: '#C90000',
-  background: '#130101',
-}))
-
-const SpecialSectionHeader = styled('h1', {
-  name: 'SpecialSectionHeading',
-  slot: 'Main',
-})(({ theme }) => ({
-  ...theme.typography.h1,
-  paddingLeft: 'var(--cia-container-spacing)',
-  paddingRight: 'var(--cia-container-spacing)',
-  fontFamily: 'Benguiat Std',
-  fontSize: '7rem',
+  background: theme.palette.primary.dark,
+  color: theme.palette.text.secondary,
 }))
 
 function SpecialSectionHeading(props) {
-  const { heading } = props
+  const { heading, headingType = 'h2' } = props
+
+  const theme = useTheme()
 
   return (
     <SpecialSectionRoot>
-      <SpecialSectionHeader>{heading}</SpecialSectionHeader>
+      <Typography
+        component={headingType}
+        sx={{
+          ...theme.typography.h1,
+          paddingLeft: 'var(--cia-container-spacing)',
+          paddingRight: 'var(--cia-container-spacing)',
+          fontFamily: theme.typography.fontFamilyTertiary,
+          fontSize: '7rem',
+        }}
+      >
+        {heading}
+      </Typography>
     </SpecialSectionRoot>
   )
 }
 
 SpecialSectionHeading.propTypes = {
   heading: PropTypes.string,
+  headingType: PropTypes.string,
 }
 
 export default SpecialSectionHeading
