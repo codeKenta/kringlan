@@ -76,5 +76,6 @@ export default {
   },
   SpecialSectionHeading: {
     heading: 'EPICS',
+    headingType: 'h2',
   },
 }
