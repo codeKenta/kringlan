@@ -1,7 +1,25 @@
-import Hero from '~/blocks/Hero/mock'
-
 export default {
-  Hero,
+  Hero: {
+    heading: 'Let´s Roll the Dice',
+    subheading: 'Welcome to the magic world of spell casters and fighters',
+    headingType: 'h1',
+    subheadingType: 'h2',
+    ctaPrimary: {
+      url: '/adventures',
+      label: 'The Adventures',
+    },
+    ctaSecondary: {
+      url: '/characters',
+      label: 'The Characters',
+    },
+    mediaProps: {
+      component: 'picture',
+      breakpoints: {
+        xs: 'https://wallpapercave.com/wp/zD18bKX.jpg',
+        sm: 'https://wallpapercave.com/wp/wp2770248.jpg',
+      },
+    },
+  },
   ArticleSlideshow: {
     heading: 'Generic Heading',
     entries: Array.from(new Array(6), () => ({
