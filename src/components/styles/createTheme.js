@@ -30,21 +30,7 @@ export default function createTheme(options = {}) {
   const theme = createMuiTheme(
     {
       breakpoints,
-      palette: {
-        primary: {
-          light: '#032C51',
-          main: '#26252D',
-          dark: '#000000',
-        },
-        secondary: {
-          light: '#F8F8F8',
-          main: '#E9E9E9',
-          dark: '#C90000',
-        },
-        text: {
-          secondary: '#C90000',
-        },
-      },
+      palette,
       shape,
       spacing,
       typography,
