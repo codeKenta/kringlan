@@ -33,7 +33,7 @@ const TitleHeroMain = styled('div', {
 }))
 
 function TitleHero(props) {
-  const { heading, headingType = 'h3', subtitle, textColor } = props
+  const { heading, headingType = 'h1', subtitle, textColor } = props
 
   return (
     <TitleHeroRoot>
@@ -43,10 +43,12 @@ function TitleHero(props) {
           component={headingType}
           sx={(theme) => ({
             color: !textColor ? 'text.secondary' : textColor,
-            lineHeight: '6rem',
             fontFamily: theme.typography.fontFamilyTertiary,
             fontSize: '7rem',
+            fontWeight: 500,
+            lineHeight: '6rem',
           })}
+          gutterBottom
         >
           {heading.toUpperCase()}
         </Typography>

@@ -40,14 +40,8 @@ export default function createTheme(options = {}) {
   )
 
   theme.typography.h1 = {
-    fontSize: '4rem',
-    lineHeight: '2.8rem',
-    [theme.breakpoints.up('md')]: {
-      fontSize: '3.7rem',
-    },
-    [theme.breakpoints.up('xs')]: {
-      fontSize: '3.2rem',
-    },
+    fontSize: '6rem',
+    lineHeight: 1,
   }
 
   // Patch the theme object with mixins & overrides once the theme object is defined

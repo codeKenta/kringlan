@@ -89,8 +89,9 @@ function Hero(props) {
         <Typography
           variant="h1"
           component={headingType}
-          sx={(theme) => ({
-            ...theme.typography.h1, // dunno why this makes the text bigger, shouldnt it already be applied?
+          sx={() => ({
+            fontSize: '3.5rem',
+            fontFamily: 'Roboto',
           })}
         >
           {heading.toUpperCase()}
@@ -105,6 +106,7 @@ function Hero(props) {
               ...theme.mixins.contain('sm'),
               padding: theme.spacing(2.5),
               lineHeight: '3.5rem',
+              fontWeight: 300,
             })}
           >
             {subheading}
@@ -112,15 +114,7 @@ function Hero(props) {
         )}
 
         {ctaPrimary && ctaPrimary.url && ctaPrimary.label && (
-          <HeroButton
-            component={RouterLink}
-            href={ctaPrimary.url}
-            variant="contained"
-            color="primary"
-            sx={{
-              fontWeight: 'bolder',
-            }}
-          >
+          <HeroButton component={RouterLink} href={ctaPrimary.url} variant="contained">
             {ctaPrimary.label}
           </HeroButton>
         )}
@@ -131,9 +125,6 @@ function Hero(props) {
             href={ctaSecondary.url}
             variant="contained"
             color="secondary"
-            sx={{
-              fontWeight: 'bolder',
-            }}
           >
             {ctaSecondary.label}
           </HeroButton>
