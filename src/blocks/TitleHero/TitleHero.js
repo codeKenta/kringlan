@@ -43,7 +43,7 @@ function TitleHero(props) {
           component={headingType}
           sx={(theme) => ({
             color: !textColor ? 'text.secondary' : textColor,
-            lineHeight: '6.5rem',
+            lineHeight: '6rem',
             fontFamily: theme.typography.fontFamilyTertiary,
             fontSize: '7rem',
           })}
