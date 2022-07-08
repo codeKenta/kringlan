@@ -77,6 +77,10 @@ export default {
   TitleHero: {
     heading: 'The Hooded Bandits',
     subtitle: 'SESSION II',
-    textColor: '#C90000',
+    textColor: 'text.secondary',
+  },
+  SpecialSectionHeading: {
+    heading: 'EPICS',
+    headingType: 'h2',
   },
 }

@@ -46,7 +46,6 @@ function TitleHero(props) {
             lineHeight: '6.5rem',
             fontFamily: theme.typography.fontFamilyTertiary,
             fontSize: '7rem',
-            fontWeight: 'bold',
           })}
         >
           {heading.toUpperCase()}
