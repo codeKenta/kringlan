@@ -1,7 +1,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from '@mui/system'
-import { Button } from '@mui/material'
+import { Button, Typography } from '@mui/material'
 import { Media, MediaReveal } from '@noaignite/oui'
 import { RouterLink } from '~/containers'
 import { linkType, mediaType } from '~/api/utils'
@@ -10,6 +10,7 @@ const HeroRoot = styled('section', {
   name: 'Hero',
   slot: 'Root',
 })(({ theme }) => ({
+  background: 'radial-gradient(rgba(0,0,0,0.06), rgba(0,0,0,0.69))',
   position: 'relative',
   display: 'flex',
   flexDirection: 'column',
@@ -42,44 +43,28 @@ const HeroMain = styled('div', {
   ...theme.mixins.contain('md'),
   paddingLeft: 'var(--cia-container-spacing)',
   paddingRight: 'var(--cia-container-spacing)',
-}))
-
-const HeroHeading = styled('h1', {
-  name: 'Hero',
-  slot: 'Heading',
-})(({ theme }) => ({
-  ...theme.typography.h1,
-  margin: 0,
-  textTransform: 'uppercase',
-  fontWeight: '700',
-}))
-
-const HeroExcerpt = styled('p', {
-  name: 'Hero',
-  slot: 'Excerpt',
-})(({ theme }) => ({
-  ...theme.typography.h3,
-  ...theme.mixins.contain('sm'),
-  padding: theme.spacing(2.5),
-  lineHeight: '60px',
+  color: theme.palette.contrastText,
 }))
 
 const HeroButton = styled(Button, {
   name: 'Hero',
   slot: 'Button',
 })(({ theme }) => ({
-  // Makes entire Hero block clickable.
-  position: 'static',
-  '&:before': {
-    ...theme.mixins.absolute(0),
-    content: '""',
-  },
   margin: theme.spacing(0, 2.5),
-  borderRadius: '8px',
+  borderRadius: 8,
 }))
 
 function Hero(props) {
-  const { heading, excerpt, mediaProps, ctaPrimary, ctaSecondary, renderIndex } = props
+  const {
+    heading,
+    subheading,
+    mediaProps,
+    ctaPrimary,
+    ctaSecondary,
+    renderIndex,
+    headingType = 'h1',
+    subheadingType = 'h2',
+  } = props
 
   return (
     <HeroRoot>
@@ -101,18 +86,38 @@ function Hero(props) {
       )}
 
       <HeroMain>
-        <HeroHeading>{heading}</HeroHeading>
+        <Typography
+          variant="h1"
+          component={headingType}
+          sx={(theme) => ({
+            ...theme.typography.h1, // dunno why this makes the text bigger, shouldnt it already be applied?
+          })}
+        >
+          {heading.toUpperCase()}
+        </Typography>
 
-        {excerpt && <HeroExcerpt>{excerpt}</HeroExcerpt>}
+        {subheading && (
+          <Typography
+            component={subheadingType}
+            variant="h3"
+            sx={(theme) => ({
+              display: 'block',
+              ...theme.mixins.contain('sm'),
+              padding: theme.spacing(2.5),
+              lineHeight: '3.5rem',
+            })}
+          >
+            {subheading}
+          </Typography>
+        )}
 
         {ctaPrimary && ctaPrimary.url && ctaPrimary.label && (
           <HeroButton
             component={RouterLink}
             href={ctaPrimary.url}
             variant="contained"
+            color="primary"
             sx={{
-              // Testing purposes, dont be alarmed.
-              backgroundColor: '#000',
               fontWeight: 'bolder',
             }}
           >
@@ -125,12 +130,9 @@ function Hero(props) {
             component={RouterLink}
             href={ctaSecondary.url}
             variant="contained"
+            color="secondary"
             sx={{
-              // Testing purposes, dont be alarmed.
-              backgroundColor: '#fff',
-              color: '#000',
               fontWeight: 'bolder',
-              borderWidth: '0',
             }}
           >
             {ctaSecondary.label}
@@ -145,9 +147,11 @@ Hero.propTypes = {
   mediaProps: mediaType,
   renderIndex: PropTypes.number.isRequired,
   heading: PropTypes.string,
-  excerpt: PropTypes.array,
+  subheading: PropTypes.string,
   ctaPrimary: linkType,
   ctaSecondary: linkType,
+  headingType: PropTypes.string,
+  subheadingType: PropTypes.string,
 }
 
 export default Hero
