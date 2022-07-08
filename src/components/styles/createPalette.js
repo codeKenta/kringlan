@@ -1,6 +1,5 @@
 import { deepmerge } from '@mui/utils'
 import { alpha } from '@mui/material/styles'
-import { pink, purple } from '@mui/material/colors'
 import blue from '../colors/blue'
 import common from '../colors/common'
 import green from '../colors/green'
@@ -12,7 +11,7 @@ export const darkText = {
   // The most important text.
   primary: common.black,
   // Secondary text.
-  secondary: alpha(common.black, 0.65),
+  secondary: '#C90000',
   // Disabled text have even lower visual prominence.
   disabled: alpha(common.black, 0.4),
   // Text hints.
@@ -25,7 +24,7 @@ export const darkText = {
 
 export const lightText = {
   primary: common.white,
-  secondary: alpha(common.white, 0.65),
+  secondary: '#C90000',
   disabled: alpha(common.white, 0.4),
   hint: alpha(common.white, 0.4),
   main: common.white,
@@ -93,14 +92,14 @@ export const dark = {
 export default function createPalette(palette) {
   const {
     primary = {
-      light: pink[300],
-      main: pink[500],
-      dark: pink[700],
+      light: '#032C51',
+      main: '#26252D',
+      dark: '#000000',
     },
     secondary = {
-      light: purple[300],
-      main: purple[500],
-      dark: purple[700],
+      light: '#F8F8F8',
+      main: '#E9E9E9',
+      dark: '#C90000',
     },
     error = {
       light: red[300],
