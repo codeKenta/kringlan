@@ -39,6 +39,11 @@ export default function createTheme(options = {}) {
     other,
   )
 
+  theme.typography.h1 = {
+    fontSize: '6rem',
+    lineHeight: 1,
+  }
+
   // Patch the theme object with mixins & overrides once the theme object is defined
   theme.mixins = createMixins(theme.breakpoints, theme.spacing, mixinsInput)
   theme.components = createOverrides(theme)

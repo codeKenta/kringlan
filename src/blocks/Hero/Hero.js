@@ -1,15 +1,16 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from '@mui/system'
-import { Button } from '@mui/material'
+import { Button, Typography } from '@mui/material'
 import { Media, MediaReveal } from '@noaignite/oui'
-import { RouterLink, SanityHtml } from '~/containers'
+import { RouterLink } from '~/containers'
 import { linkType, mediaType } from '~/api/utils'
 
 const HeroRoot = styled('section', {
   name: 'Hero',
   slot: 'Root',
 })(({ theme }) => ({
+  background: 'radial-gradient(rgba(0,0,0,0.06), rgba(0,0,0,0.69))',
   position: 'relative',
   display: 'flex',
   flexDirection: 'column',
@@ -39,34 +40,31 @@ const HeroMain = styled('div', {
   slot: 'Main',
 })(({ theme }) => ({
   ...theme.mixins.verticalRhythm(2),
-  ...theme.mixins.contain('sm'),
+  ...theme.mixins.contain('md'),
   paddingLeft: 'var(--cia-container-spacing)',
   paddingRight: 'var(--cia-container-spacing)',
-}))
-
-const HeroHeading = styled('h1', {
-  name: 'Hero',
-  slot: 'Heading',
-})(({ theme }) => ({
-  ...theme.typography.h3,
-  margin: 0,
-  fontSize: `max(${theme.typography.h3.fontSize}, 3.2vw)`,
+  color: theme.palette.contrastText,
 }))
 
 const HeroButton = styled(Button, {
   name: 'Hero',
   slot: 'Button',
 })(({ theme }) => ({
-  // Makes entire Hero block clickable.
-  position: 'static',
-  '&:before': {
-    ...theme.mixins.absolute(0),
-    content: '""',
-  },
+  margin: theme.spacing(0, 2.5),
+  borderRadius: 8,
 }))
 
 function Hero(props) {
-  const { heading, excerpt, mediaProps, ctaPrimary, ctaSecondary, renderIndex } = props
+  const {
+    heading,
+    subheading,
+    mediaProps,
+    ctaPrimary,
+    ctaSecondary,
+    renderIndex,
+    headingType = 'h1',
+    subheadingType = 'h2',
+  } = props
 
   return (
     <HeroRoot>
@@ -88,17 +86,35 @@ function Hero(props) {
       )}
 
       <HeroMain>
-        <HeroHeading>{heading}</HeroHeading>
+        <Typography
+          variant="h1"
+          component={headingType}
+          sx={() => ({
+            fontSize: '3.5rem',
+            fontFamily: 'Roboto',
+          })}
+        >
+          {heading.toUpperCase()}
+        </Typography>
 
-        {excerpt && <SanityHtml textBlocks={excerpt} />}
+        {subheading && (
+          <Typography
+            component={subheadingType}
+            variant="h3"
+            sx={(theme) => ({
+              display: 'block',
+              ...theme.mixins.contain('sm'),
+              padding: theme.spacing(2.5),
+              lineHeight: '3.5rem',
+              fontWeight: 300,
+            })}
+          >
+            {subheading}
+          </Typography>
+        )}
 
         {ctaPrimary && ctaPrimary.url && ctaPrimary.label && (
-          <HeroButton
-            component={RouterLink}
-            href={ctaPrimary.url}
-            color="inherit"
-            variant="outlined"
-          >
+          <HeroButton component={RouterLink} href={ctaPrimary.url} variant="contained">
             {ctaPrimary.label}
           </HeroButton>
         )}
@@ -107,8 +123,8 @@ function Hero(props) {
           <HeroButton
             component={RouterLink}
             href={ctaSecondary.url}
-            color="inherit"
-            variant="outlined"
+            variant="contained"
+            color="secondary"
           >
             {ctaSecondary.label}
           </HeroButton>
@@ -122,9 +138,11 @@ Hero.propTypes = {
   mediaProps: mediaType,
   renderIndex: PropTypes.number.isRequired,
   heading: PropTypes.string,
-  excerpt: PropTypes.array,
+  subheading: PropTypes.string,
   ctaPrimary: linkType,
   ctaSecondary: linkType,
+  headingType: PropTypes.string,
+  subheadingType: PropTypes.string,
 }
 
 export default Hero
