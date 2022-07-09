@@ -5,12 +5,12 @@ const subLinks = Array.from(new Array(12), (_, idx) => ({
 
 export const menuPrimary = [
   {
-    label: 'Brands',
-    url: '/brands',
+    label: 'Campaigns',
+    url: '/campaigns',
   },
   {
-    label: 'New arrivals',
-    url: '/new-arrivals',
+    label: 'Characters',
+    url: '/characters',
   },
 ]
 
@@ -44,20 +44,12 @@ export const menuSecondary = [
 
 export const menuFooter = [
   {
-    label: 'Work',
-    url: '/work',
+    label: 'Campaigns',
+    url: '/campaigns',
   },
   {
-    label: 'News',
-    url: '/news',
-  },
-  {
-    label: 'Press',
-    url: '/press',
-  },
-  {
-    label: 'About',
-    url: '/about',
+    label: 'Characters',
+    url: '/characters',
   },
 ]
 
