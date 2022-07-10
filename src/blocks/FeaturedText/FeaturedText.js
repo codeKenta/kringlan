@@ -21,54 +21,18 @@ const FeaturedTextRoot = styled('section', {
 }))
 
 function FeaturedText(props) {
-  const { heading, headingType = 'h3', subtitle2, subtitle1, ctaPrimary, ctaSecondary } = props
+  const { heading, headingType = 'h3', subtitle2, subtitle1, ctaPrimary } = props
 
   return (
     <FeaturedTextRoot>
       <Card
         sx={(theme) => ({
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
           bgcolor: theme.palette.secondary.main,
-          pt: theme.spacing(10),
-          pb: theme.spacing(2),
-          px: theme.spacing(4),
-          mx: theme.spacing(4),
-        })}
-      >
-        <CardContent>
-          <Typography
-            variant="h3"
-            sx={{ fontSize: '2rem', fontWeight: 'bold', pb: 2 }}
-            component={headingType}
-            gutterBottom
-          >
-            {heading}
-          </Typography>
-
-          <Typography variant="h4" paragraph gutterBottom sx={{ lineHeight: 1.3 }}>
-            {subtitle1}
-          </Typography>
-
-          <Typography variant="subtitle1" paragraph sx={{ py: 2 }}>
-            {subtitle2}
-          </Typography>
-          <Button variant="contained" size="small" sx={{ borderRadius: 2 }}>
-            {ctaPrimary.label}
-          </Button>
-        </CardContent>
-      </Card>
-      <Card
-        sx={(theme) => ({
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          color: theme.palette.primary.light,
-          bgcolor: theme.palette.primary.main,
-          pt: theme.spacing(10),
-          pb: theme.spacing(2),
-          px: theme.spacing(4),
+          padding: theme.spacing(10, 4, 4),
+          maxWidth: 700,
         })}
       >
         <CardContent>
@@ -85,20 +49,15 @@ function FeaturedText(props) {
             {subtitle1}
           </Typography>
 
-          <Typography variant="subtitle1" paragraph sx={{ py: 2 }}>
+          <Typography variant="subtitle2" paragraph sx={{ py: 4 }}>
             {subtitle2}
           </Typography>
-
           <Button
             variant="contained"
             size="small"
-            sx={(theme) => ({
-              bgcolor: theme.palette.primary.light,
-              borderRadius: 2,
-              color: theme.palette.primary.main,
-            })}
+            sx={{ bgcolor: 'primary.light', borderRadius: 2 }}
           >
-            {ctaSecondary.label}
+            {ctaPrimary.label}
           </Button>
         </CardContent>
       </Card>
@@ -108,7 +67,6 @@ function FeaturedText(props) {
 
 FeaturedText.propTypes = {
   ctaPrimary: linkType,
-  ctaSecondary: linkType,
   heading: PropTypes.string,
   headingType: PropTypes.string,
   subtitle1: PropTypes.string,

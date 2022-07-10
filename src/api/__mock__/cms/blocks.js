@@ -111,9 +111,5 @@ export default {
       url: '/foo',
       label: 'Read full adventure',
     },
-    ctaSecondary: {
-      url: '/bar',
-      label: 'The characters',
-    },
   },
 }
