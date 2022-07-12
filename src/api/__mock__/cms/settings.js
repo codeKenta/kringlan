@@ -56,7 +56,6 @@ export const menuFooter = [
 export default {
   menus: {
     primary: menuPrimary,
-    secondary: menuSecondary,
     footer: menuFooter,
   },
   facebookUrl: 'https://www.facebook.com/',

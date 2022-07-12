@@ -11,12 +11,14 @@ import AppNavDrawerListItem from './AppNavDrawerListItem'
 const AppNavDrawerRoot = styled(Drawer, {
   name: 'AppNavDrawer',
   slot: 'Root',
-})({
+})(({ theme }) => ({
   '& .MuiDrawer-paper': {
     maxWidth: '100%',
     width: 414, // iPhone 6/7/8 Plus
+    backgroundColor: theme.palette.primary.dark,
+    color: theme.palette.getContrastText(theme.palette.primary.dark),
   },
-})
+}))
 
 const AppNavDrawerScrollContainer = styled('div', {
   name: 'AppNavDrawer',
@@ -55,6 +57,7 @@ const AppNavDrawer = React.memo(function AppNavDrawer(props) {
           edge="start"
           size="small"
           aria-label={t(__translationGroup)`Close main menu`}
+          color="secondary"
         >
           <CloseIcon />
         </IconButton>

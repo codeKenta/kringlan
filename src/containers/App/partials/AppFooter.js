@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { styled } from '@mui/system'
+import { styled, keyframes } from '@mui/system'
 import { Container, Link } from '@mui/material'
 import { Brand as BrandIcon } from '~/components/icons'
 import { useRemoteConfig, useI18n } from '~/context'
@@ -17,17 +17,28 @@ const AppFooterRoot = styled('footer', {
   justifyContent: 'center',
 }))
 
+// Experimental just for fun
+const neonLight = keyframes`
+  from {
+    filter: saturate(70%);
+  }
+  to {
+    filter: saturate(100%);
+  }
+
+`
+
 const AppFooterBrandLink = styled(RouterLink, {
   name: 'AppFooter',
   slot: 'BrandLink',
-})(({ theme }) => ({
+})(() => ({
   color: 'inherit',
   '& > svg': {
     display: 'block',
     width: '300px',
     height: 'auto',
     margin: '0 auto',
-    padding: theme.spacing(2),
+    animation: `${neonLight} 50ms infinite alternate`,
   },
 }))
 
@@ -49,7 +60,11 @@ const AppFooter = React.memo(function AppFooter(props) {
   return (
     <AppFooterRoot {...props}>
       <Container>
-        <AppFooterBrandLink href="/" aria-label={t(__translationGroup)`Go to the homepage`}>
+        <AppFooterBrandLink
+          alt="Kringlan Logo"
+          href="/"
+          aria-label={t(__translationGroup)`Go to the homepage`}
+        >
           <BrandIcon />
         </AppFooterBrandLink>
         <AppFooterNav>

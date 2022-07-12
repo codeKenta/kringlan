@@ -5,9 +5,9 @@ import PropTypes from 'prop-types'
 import useSize from '@react-hook/size'
 import { generateUtilityClasses } from '@mui/base'
 import { styled } from '@mui/system'
-import { AppBar, Link, Toolbar } from '@mui/material'
-import { useGlobalState, useI18n, useRemoteConfig } from '~/context'
-import { Brand as BrandIcon } from '~/components/icons'
+import { AppBar, IconButton, Link, Toolbar } from '@mui/material'
+import { useGlobalState, useGlobalHandlers, useI18n, useRemoteConfig } from '~/context'
+import { Brand as BrandIcon, Close as CloseIcon, Menu as MenuIcon } from '~/components/icons'
 import RouterLink from '../../RouterLink'
 
 const BREAKPOINT_KEY = 'md'
@@ -23,11 +23,13 @@ const AppHeaderRoot = styled(AppBar, {
   name: 'AppHeader',
   slot: 'Root',
 })(({ theme, ownerState }) => ({
-  height: 80,
   display: 'flex',
-  padding: theme.spacing(0, 5),
+  height: 80,
+  padding: theme.spacing(0, 2),
+  alignItems: 'flex-start',
   justifyContent: 'center',
   backgroundColor: theme.palette.primary.dark,
+
   ...(ownerState.headerModeState === 'transparent' && {
     '&:not(:hover):not(:focus-within)': {
       backgroundColor: 'transparent',
@@ -41,10 +43,10 @@ const AppHeaderRoot = styled(AppBar, {
   }),
   // Util classes
   [`& .${classes.toolbarPushMobile}`]: {
-    [theme.breakpoints.down(BREAKPOINT_KEY)]: { marginLeft: '0' },
+    [theme.breakpoints.down(BREAKPOINT_KEY)]: { marginLeft: 'auto' },
   },
   [`& .${classes.toolbarPushDesktop}`]: {
-    [theme.breakpoints.up(BREAKPOINT_KEY)]: { marginLeft: '0' },
+    [theme.breakpoints.up(BREAKPOINT_KEY)]: { marginLeft: 'auto' },
   },
   [`& .${classes.hiddenOnMobile}`]: {
     [theme.breakpoints.down(BREAKPOINT_KEY)]: { display: 'none' },
@@ -57,24 +59,31 @@ const AppHeaderRoot = styled(AppBar, {
 const AppHeaderBrandLink = styled(RouterLink, {
   name: 'AppHeader',
   slot: 'BrandLink',
-})({
-  color: 'inherit',
+})(() => ({
+  maxWidth: 150,
+  height: 'auto',
+  transform: 'translateX(29%)',
+
   '& > svg': {
     display: 'block',
-    width: '110px',
+    width: 'auto',
     height: 'auto',
   },
-})
+}))
 
 const AppHeaderNav = styled('nav', {
   name: 'AppHeader',
   slot: 'List',
 })(({ theme }) => ({
-  color: theme.palette.secondary.light,
+  color: theme.palette.getContrastText(theme.palette.primary.dark),
   display: 'flex',
   flexDirection: 'row',
   gap: theme.spacing(3),
-  margin: theme.spacing(0, 10),
+  margin: theme.spacing(0, 12),
+
+  '@media(max-width: 600px)': {
+    display: 'none',
+  },
 }))
 
 const AppHeader = React.memo(function AppHeader(props) {
@@ -88,6 +97,7 @@ const AppHeader = React.memo(function AppHeader(props) {
     ...other
   } = props
 
+  const { onNavMenuToggle } = useGlobalHandlers()
   const { t } = useI18n()
 
   const rootRef = React.useRef(null)
@@ -153,8 +163,25 @@ const AppHeader = React.memo(function AppHeader(props) {
       />
 
       <Toolbar>
+        <IconButton
+          onClick={onNavMenuToggle}
+          color="inherit" // Inherit color from `headerColor`.
+          edge="start"
+          size="small"
+          aria-haspopup="true"
+          aria-expanded={isNavMenuOpen}
+          aria-label={t(__translationGroup)`Toggle main menu`}
+          sx={{
+            '@media(min-width: 800px)': {
+              display: 'none',
+            },
+          }}
+        >
+          {isNavMenuOpen ? <CloseIcon /> : <MenuIcon color="secondary" />}
+        </IconButton>
         <div className={classes.toolbarPushMobile} />
         <div className={classes.toolbarPushDesktop} />
+
         <AppHeaderBrandLink href="/" aria-label={t(__translationGroup)`Go to the homepage`}>
           <BrandIcon />
         </AppHeaderBrandLink>
