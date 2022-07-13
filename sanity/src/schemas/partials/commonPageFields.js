@@ -1,3 +1,7 @@
+import * as blocks from '../blocks'
+
+const blockNames = Object.keys(blocks).map((blockName) => ({ type: blockName }))
+
 export default [
   {
     title: 'Title',
@@ -35,7 +39,7 @@ export default [
   {
     name: 'blocks',
     type: 'array',
-    of: [{ type: 'Hero' }, { type: 'Content' }],
+    of: blockNames,
     group: 'content',
   },
   {

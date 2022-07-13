@@ -2,7 +2,7 @@ import { formatCtaLink, formatAdvancedMedia } from '~/api/sanity/utils'
 
 export default `{
   heading,
-  excerpt,
+  "subheading": excerpt,
   mediaProps ${formatAdvancedMedia},
   ${formatCtaLink('ctaPrimary', 'ctaLabelPrimary', 'ctaUrlPrimary')},
   ${formatCtaLink('ctaSecondary', 'ctaLabelSecondary', 'ctaUrlSecondary')}
