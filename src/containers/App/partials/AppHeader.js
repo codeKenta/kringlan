@@ -5,8 +5,8 @@ import PropTypes from 'prop-types'
 import useSize from '@react-hook/size'
 import { generateUtilityClasses } from '@mui/base'
 import { styled } from '@mui/system'
-import { AppBar, IconButton, Toolbar } from '@mui/material'
-import { useGlobalHandlers, useGlobalState, useI18n } from '~/context'
+import { AppBar, IconButton, Link, Toolbar } from '@mui/material'
+import { useGlobalState, useGlobalHandlers, useI18n, useRemoteConfig } from '~/context'
 import { Brand as BrandIcon, Close as CloseIcon, Menu as MenuIcon } from '~/components/icons'
 import RouterLink from '../../RouterLink'
 
@@ -23,6 +23,11 @@ const AppHeaderRoot = styled(AppBar, {
   name: 'AppHeader',
   slot: 'Root',
 })(({ theme, ownerState }) => ({
+  height: 80,
+  padding: theme.spacing(4),
+  justifyContent: 'center',
+  backgroundColor: theme.palette.primary.dark,
+
   ...(ownerState.headerModeState === 'transparent' && {
     '&:not(:hover):not(:focus-within)': {
       backgroundColor: 'transparent',
@@ -36,10 +41,10 @@ const AppHeaderRoot = styled(AppBar, {
   }),
   // Util classes
   [`& .${classes.toolbarPushMobile}`]: {
-    [theme.breakpoints.down(BREAKPOINT_KEY)]: { marginLeft: 'auto' },
+    [theme.breakpoints.down(BREAKPOINT_KEY)]: { marginRight: 'auto' },
   },
   [`& .${classes.toolbarPushDesktop}`]: {
-    [theme.breakpoints.up(BREAKPOINT_KEY)]: { marginLeft: 'auto' },
+    [theme.breakpoints.up(BREAKPOINT_KEY)]: { marginRight: 'auto' },
   },
   [`& .${classes.hiddenOnMobile}`]: {
     [theme.breakpoints.down(BREAKPOINT_KEY)]: { display: 'none' },
@@ -52,16 +57,28 @@ const AppHeaderRoot = styled(AppBar, {
 const AppHeaderBrandLink = styled(RouterLink, {
   name: 'AppHeader',
   slot: 'BrandLink',
-})({
-  position: 'absolute',
-  left: '50%',
-  transform: 'translateX(-50%)',
-  color: 'inherit',
+})(() => ({
+  height: 65,
   '& > svg': {
     display: 'block',
-    width: 'auto',
+    width: 'inherit',
+    height: 'inherit',
   },
-})
+}))
+
+const AppHeaderNav = styled('nav', {
+  name: 'AppHeader',
+  slot: 'List',
+})(({ theme }) => ({
+  color: theme.palette.getContrastText(theme.palette.primary.dark),
+  display: 'flex',
+  flexDirection: 'row',
+  gap: theme.spacing(3),
+  margin: theme.spacing(0, 10),
+  '@media(max-width: 600px)': {
+    display: 'none',
+  },
+}))
 
 const AppHeader = React.memo(function AppHeader(props) {
   const {
@@ -117,6 +134,8 @@ const AppHeader = React.memo(function AppHeader(props) {
     headerModeState,
   }
 
+  const { menus } = useRemoteConfig()
+
   return (
     <AppHeaderRoot
       ownerState={ownerState}
@@ -138,24 +157,40 @@ const AppHeader = React.memo(function AppHeader(props) {
       />
 
       <Toolbar>
-        <IconButton
-          onClick={onNavMenuToggle}
-          color="inherit" // Inherit color from `headerColor`.
-          edge="start"
-          size="small"
-          aria-haspopup="true"
-          aria-expanded={isNavMenuOpen}
-          aria-label={t(__translationGroup)`Toggle main menu`}
-        >
-          {isNavMenuOpen ? <CloseIcon /> : <MenuIcon />}
-        </IconButton>
-
-        <div className={classes.toolbarPushMobile} />
-        <div className={classes.toolbarPushDesktop} />
-
         <AppHeaderBrandLink href="/" aria-label={t(__translationGroup)`Go to the homepage`}>
           <BrandIcon />
         </AppHeaderBrandLink>
+
+        {menus?.primary?.length > 0 && (
+          <AppHeaderNav>
+            {menus.primary.map((menuLink, idx) => (
+              <div key={idx}>
+                <Link component={RouterLink} href={menuLink.url} variant="button">
+                  {menuLink.label}
+                </Link>
+              </div>
+            ))}
+          </AppHeaderNav>
+        )}
+
+        <IconButton
+          onClick={onNavMenuToggle}
+          color="inherit" // Inherit color from `headerColor`.
+          edge="end"
+          size="medium"
+          aria-haspopup="true"
+          aria-expanded={isNavMenuOpen}
+          aria-label={t(__translationGroup)`Toggle main menu`}
+          sx={{
+            position: 'absolute',
+            left: '98%',
+            '@media(min-width: 601px)': {
+              display: 'none',
+            },
+          }}
+        >
+          {isNavMenuOpen ? <CloseIcon /> : <MenuIcon color="secondary" />}
+        </IconButton>
       </Toolbar>
     </AppHeaderRoot>
   )
