@@ -23,10 +23,8 @@ const AppHeaderRoot = styled(AppBar, {
   name: 'AppHeader',
   slot: 'Root',
 })(({ theme, ownerState }) => ({
-  display: 'flex',
   height: 80,
-  padding: theme.spacing(0, 2),
-  alignItems: 'flex-start',
+  padding: theme.spacing(4),
   justifyContent: 'center',
   backgroundColor: theme.palette.primary.dark,
 
@@ -43,10 +41,10 @@ const AppHeaderRoot = styled(AppBar, {
   }),
   // Util classes
   [`& .${classes.toolbarPushMobile}`]: {
-    [theme.breakpoints.down(BREAKPOINT_KEY)]: { marginLeft: 'auto' },
+    [theme.breakpoints.down(BREAKPOINT_KEY)]: { marginRight: 'auto' },
   },
   [`& .${classes.toolbarPushDesktop}`]: {
-    [theme.breakpoints.up(BREAKPOINT_KEY)]: { marginLeft: 'auto' },
+    [theme.breakpoints.up(BREAKPOINT_KEY)]: { marginRight: 'auto' },
   },
   [`& .${classes.hiddenOnMobile}`]: {
     [theme.breakpoints.down(BREAKPOINT_KEY)]: { display: 'none' },
@@ -60,14 +58,11 @@ const AppHeaderBrandLink = styled(RouterLink, {
   name: 'AppHeader',
   slot: 'BrandLink',
 })(() => ({
-  maxWidth: 150,
-  height: 'auto',
-  transform: 'translateX(29%)',
-
+  height: 65,
   '& > svg': {
     display: 'block',
-    width: 'auto',
-    height: 'auto',
+    width: 'inherit',
+    height: 'inherit',
   },
 }))
 
@@ -79,8 +74,7 @@ const AppHeaderNav = styled('nav', {
   display: 'flex',
   flexDirection: 'row',
   gap: theme.spacing(3),
-  margin: theme.spacing(0, 12),
-
+  margin: theme.spacing(0, 10),
   '@media(max-width: 600px)': {
     display: 'none',
   },
@@ -163,25 +157,6 @@ const AppHeader = React.memo(function AppHeader(props) {
       />
 
       <Toolbar>
-        <IconButton
-          onClick={onNavMenuToggle}
-          color="inherit" // Inherit color from `headerColor`.
-          edge="start"
-          size="small"
-          aria-haspopup="true"
-          aria-expanded={isNavMenuOpen}
-          aria-label={t(__translationGroup)`Toggle main menu`}
-          sx={{
-            '@media(min-width: 800px)': {
-              display: 'none',
-            },
-          }}
-        >
-          {isNavMenuOpen ? <CloseIcon /> : <MenuIcon color="secondary" />}
-        </IconButton>
-        <div className={classes.toolbarPushMobile} />
-        <div className={classes.toolbarPushDesktop} />
-
         <AppHeaderBrandLink href="/" aria-label={t(__translationGroup)`Go to the homepage`}>
           <BrandIcon />
         </AppHeaderBrandLink>
@@ -197,6 +172,25 @@ const AppHeader = React.memo(function AppHeader(props) {
             ))}
           </AppHeaderNav>
         )}
+
+        <IconButton
+          onClick={onNavMenuToggle}
+          color="inherit" // Inherit color from `headerColor`.
+          edge="end"
+          size="medium"
+          aria-haspopup="true"
+          aria-expanded={isNavMenuOpen}
+          aria-label={t(__translationGroup)`Toggle main menu`}
+          sx={{
+            position: 'absolute',
+            left: '98%',
+            '@media(min-width: 601px)': {
+              display: 'none',
+            },
+          }}
+        >
+          {isNavMenuOpen ? <CloseIcon /> : <MenuIcon color="secondary" />}
+        </IconButton>
       </Toolbar>
     </AppHeaderRoot>
   )
