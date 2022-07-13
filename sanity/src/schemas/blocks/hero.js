@@ -27,7 +27,7 @@ export default {
     },
     {
       name: 'excerpt',
-      type: 'simpleRichText',
+      type: 'text',
       group: 'content',
     },
     {
