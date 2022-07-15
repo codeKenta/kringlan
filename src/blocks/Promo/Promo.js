@@ -1,7 +1,9 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from '@mui/system'
-import { Box, Typography, Card, CardMedia, CardContent } from '@mui/material'
+import { Media } from '@noaignite/oui'
+import { Box, Typography, Card, CardContent } from '@mui/material'
+import { mediaType } from '~/api/utils'
 
 const PromoRoot = styled('section', {
   name: 'Hero',
@@ -30,32 +32,27 @@ const PromoMain = styled('div', {
 }))
 
 function Promo(props) {
-  const { name, description, subtitle, imageSrc, alignContent, imageCircle } = props
+  const { name, description, subtitle, mediaProps, alignContent = 'left', imageCircle } = props
+
+  const circleSettings = '60px at 50%'
 
   return (
     <PromoRoot>
       <PromoMain>
-        <Card sx={{ display: 'flex', background: '#E9E9E9' }}>
-          {alignContent === 'right' && (
-            <CardMedia
-              component="img"
-              image={imageSrc}
-              alt={name}
-              sx={{
-                width: '300px',
-                clipPath: () => {
-                  if (imageCircle) {
-                    return 'circle(100px at 50%)'
-                  }
-                  return 0
-                },
-              }}
-            />
-          )}
-
-          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+        <Card
+          sx={(theme) => ({
+            display: 'flex',
+            bgcolor: 'secondary.light',
+            flexDirection: alignContent === 'right' ? 'row-reverse' : 'row',
+            [theme.breakpoints.down('md')]: {
+              flexDirection: 'column-reverse',
+              textAlign: 'center',
+            },
+          })}
+        >
+          <Box>
             <CardContent sx={{ flex: '1 0 auto', padding: '10%' }}>
-              <Typography variant="h3" component="h1" gutterBottom>
+              <Typography variant="h3" component="h3" gutterBottom sx={{ fontWeight: 'bold' }}>
                 {name}
               </Typography>
               <Typography variant="subtitle" paragraph>
@@ -64,22 +61,24 @@ function Promo(props) {
               <Typography>{description}</Typography>
             </CardContent>
           </Box>
-          {alignContent === 'left' && (
-            <CardMedia
-              component="img"
-              image={imageSrc}
-              alt={name}
-              sx={{
-                width: '300px',
-                clipPath: () => {
-                  if (imageCircle) {
-                    return 'circle(100px at 50%)'
-                  }
-                  return 0
-                },
-              }}
-            />
-          )}
+          <Media
+            {...(mediaProps?.component === 'video'
+              ? {
+                  autoPlay: true,
+                  muted: true,
+                  loop: true,
+                  playsInline: true,
+                }
+              : { alt: { name } })}
+            {...mediaProps}
+            sx={(theme) => ({
+              clipPath: imageCircle ? `circle(${circleSettings})` : 0,
+              [theme.breakpoints.down('md')]: {
+                width: '100%',
+                height: 150,
+              },
+            })}
+          />
         </Card>
       </PromoMain>
     </PromoRoot>
@@ -92,7 +91,7 @@ Promo.propTypes = {
   name: PropTypes.string,
   subtitle: PropTypes.string,
   description: PropTypes.string,
-  imageSrc: PropTypes.string,
+  mediaProps: mediaType,
 }
 
 export default Promo
