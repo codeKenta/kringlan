@@ -1,3 +1,6 @@
 export { default as Content } from './content'
 export { default as Hero } from './hero'
 export { default as SpecialSectionHeading } from './specialSectionHeading'
+export { default as Promo } from './promo'
+export { default as TitleHero } from './titlehero'
+export { default as FeaturedText } from './featuredText'

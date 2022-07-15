@@ -54,6 +54,7 @@ function FeaturedText(props) {
           </Typography>
           <Button
             variant="contained"
+            href={ctaPrimary.url}
             size="small"
             sx={{ bgcolor: 'primary.light', borderRadius: 2 }}
           >
