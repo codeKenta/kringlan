@@ -2,14 +2,14 @@ import commonBlockSettings from '../partials/commonBlockSettings'
 
 export default {
   ...commonBlockSettings,
-  name: 'SpecialSectionHeading',
-  title: 'Special Section Heading',
+  name: 'FeaturedText',
+  title: 'Featured Text Block',
   type: 'object',
   fields: [
     {
       name: 'heading',
       type: 'string',
-      rows: 2,
+      rows: 1,
       group: 'content',
     },
     {
@@ -26,11 +26,33 @@ export default {
         ],
       },
     },
+    {
+      name: 'subtitle1',
+      type: 'text',
+      group: 'content',
+    },
+    {
+      name: 'subtitle2',
+      type: 'text',
+      group: 'content',
+    },
+    {
+      name: 'ctaLabelPrimary',
+      title: 'label',
+      type: 'string',
+      group: 'content',
+    },
+    {
+      name: 'ctaUrlPrimary',
+      title: 'link',
+      type: 'link',
+      group: 'content',
+    },
   ],
   options: {
     editModal: 'fullscreen',
   },
   preview: {
-    prepare: () => ({ title: 'SpecialSectionHeading' }),
+    prepare: () => ({ title: 'FeaturedText' }),
   },
 }

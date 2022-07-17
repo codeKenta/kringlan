@@ -29,7 +29,7 @@ export default {
       },
     },
     {
-      titel: 'Video',
+      title: 'Video',
       name: 'video',
       type: 'file',
       options: {
