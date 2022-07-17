@@ -40,11 +40,13 @@ function Promo(props) {
     <PromoRoot>
       <PromoMain>
         <Card
+
           sx={{
             display: 'flex',
             bgcolor: 'secondary.light',
             flexDirection: alignContent === 'right' ? 'row-reverse' : 'row',
           }}
+
         >
           <Box>
             <CardContent sx={{ flex: '1 0 auto', padding: '10%' }}>
@@ -67,10 +69,12 @@ function Promo(props) {
                 }
               : { alt: { name } })}
             {...mediaProps}
+
             sx={{
               clipPath: imageCircle ? `circle(${circleSettings})` : 0,
               maxWidth: '220px',
             }}
+
           />
         </Card>
       </PromoMain>
