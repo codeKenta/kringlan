@@ -40,16 +40,18 @@ function Promo(props) {
     <PromoRoot>
       <PromoMain>
         <Card
-
-          sx={{
+          sx={(theme) => ({
             display: 'flex',
             bgcolor: 'secondary.light',
             flexDirection: alignContent === 'right' ? 'row-reverse' : 'row',
-          }}
-
+            [theme.breakpoints.down('sm')]: {
+              flexDirection: 'column-reverse',
+              textAlign: 'center',
+            },
+          })}
         >
           <Box>
-            <CardContent sx={{ flex: '1 0 auto', padding: '10%' }}>
+            <CardContent sx={{ padding: '10%' }}>
               <Typography variant="h3" component="h3" gutterBottom sx={{ fontWeight: 'bold' }}>
                 {name}
               </Typography>
@@ -69,12 +71,20 @@ function Promo(props) {
                 }
               : { alt: { name } })}
             {...mediaProps}
-
-            sx={{
+            sx={(theme) => ({
+              flex: '1 0 auto',
+              width: 250,
               clipPath: imageCircle ? `circle(${circleSettings})` : 0,
-              maxWidth: '220px',
-            }}
-
+              [theme.breakpoints.down('sm')]: {
+                width: '100%',
+              },
+              '& picture, img, video': {
+                height: '100%',
+                [theme.breakpoints.down('sm')]: {
+                  height: 150,
+                },
+              },
+            })}
           />
         </Card>
       </PromoMain>
