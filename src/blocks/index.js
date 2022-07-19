@@ -8,3 +8,4 @@ export const Promo = dynamic(() => import(/* webpackChunkName: "blocks/Promo" */
 export const SpecialSectionHeading = dynamic(() => import(/* webpackChunkName: "blocks/SpecialSectionHeading" */ './SpecialSectionHeading')) // prettier-ignore
 export const TitleHero = dynamic(() => import(/* webpackChunkName: "blocks/TitleHero" */ './TitleHero')) // prettier-ignore
 export const FeaturedText = dynamic(() => import(/* webpackChunkName: "blocks/FeaturedText" */ './FeaturedText')) // prettier-ignore
+export const Puffs = dynamic(() => import(/* webpackChunkName: "blocks/Puffs" */ './Puffs')) // prettier-ignore
