@@ -65,7 +65,7 @@ function Puffs(props) {
               maxWidth: 350,
               justifyContent: 'center',
               '& img': {
-                p: 0.8,
+                p: 0.6,
                 aspectRatio: '1/1',
                 borderRadius: '50%',
                 margin: '0 auto',

@@ -2,12 +2,7 @@ import commonBlockSettings from '../partials/commonBlockSettings'
 
 export default {
   ...commonBlockSettings,
-  fieldsets: [
-    {
-      title: 'Entries',
-      name: 'entries',
-    },
-  ],
+
   name: 'Puffs',
   title: 'Puffs block',
   type: 'object',
