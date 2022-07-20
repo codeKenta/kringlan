@@ -31,10 +31,17 @@ const PromoMain = styled('div', {
   paddingRight: 'var(--cia-container-spacing)',
 }))
 
+const Avatar = styled('div')(({ theme }) => ({
+  flex: '1 0 auto',
+  width: 250,
+  [theme.breakpoints.down('sm')]: {
+    width: '100%',
+    height: 150,
+  },
+}))
+
 function Promo(props) {
   const { name, description, subtitle, mediaProps, alignContent = 'left', imageCircle } = props
-
-  const circleSettings = '60px at 50%'
 
   return (
     <PromoRoot>
@@ -44,9 +51,15 @@ function Promo(props) {
             display: 'flex',
             bgcolor: 'secondary.light',
             flexDirection: alignContent === 'right' ? 'row-reverse' : 'row',
+            ...(imageCircle && {
+              alignItems: 'center',
+            }),
             [theme.breakpoints.down('sm')]: {
               flexDirection: 'column-reverse',
               textAlign: 'center',
+            },
+            '& picture, img, video': {
+              height: '100%',
             },
           })}
         >
@@ -61,31 +74,51 @@ function Promo(props) {
               <Typography>{description}</Typography>
             </CardContent>
           </Box>
-          <Media
-            {...(mediaProps?.component === 'video'
-              ? {
-                  autoPlay: true,
-                  muted: true,
-                  loop: true,
-                  playsInline: true,
-                }
-              : { alt: { name } })}
-            {...mediaProps}
-            sx={(theme) => ({
-              flex: '1 0 auto',
-              width: 250,
-              clipPath: imageCircle ? `circle(${circleSettings})` : 0,
-              [theme.breakpoints.down('sm')]: {
-                width: '100%',
-              },
-              '& picture, img, video': {
-                height: '100%',
-                [theme.breakpoints.down('sm')]: {
-                  height: 150,
-                },
-              },
-            })}
-          />
+          <Avatar>
+            {mediaProps?.src && (
+              <Media
+                {...(mediaProps?.component === 'video'
+                  ? {
+                      autoPlay: true,
+                      muted: true,
+                      loop: true,
+                      playsInline: true,
+                    }
+                  : { alt: { name } })}
+                {...mediaProps}
+                sx={(theme) => ({
+                  flex: '1 0 auto',
+                  width: 250,
+                  ...(mediaProps?.component === 'video' &&
+                    imageCircle && {
+                      objectFit: 'fill',
+                      borderRadius: '50%',
+                    }),
+                  [theme.breakpoints.down('sm')]: {
+                    width: '100%',
+                  },
+                  '& picture, img, video': {
+                    height: '100%',
+                    ...(imageCircle && {
+                      objectFit: 'cover',
+                      borderRadius: '50%',
+                      width: 150,
+                      height: 150,
+                      margin: '0 auto',
+                      border: '5px solid salmon',
+                    }),
+                    // objectFit: imageCircle ? 'contain' : 'cover',
+                    // clipPath: imageCircle ? `circle(${circleSettings})` : 0,
+                    [theme.breakpoints.down('sm')]: {
+                      height: 150,
+
+                      objectPosition: imageCircle ? 'top' : '0% 10%',
+                    },
+                  },
+                })}
+              />
+            )}
+          </Avatar>
         </Card>
       </PromoMain>
     </PromoRoot>

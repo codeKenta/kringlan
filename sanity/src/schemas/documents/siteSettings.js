@@ -22,13 +22,13 @@ export default {
       fields: [
         {
           name: 'primary',
-          type: 'reference',
-          to: [{ type: 'menuItem' }],
+          type: 'array',
+          of: [{ type: 'menuItem' }],
         },
         {
           name: 'footer',
-          type: 'reference',
-          to: [{ type: 'menuItem' }],
+          type: 'array',
+          of: [{ type: 'menuItem' }],
         },
       ],
     },
