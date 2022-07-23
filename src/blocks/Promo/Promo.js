@@ -49,6 +49,7 @@ function Promo(props) {
       <PromoMain>
         <Card
           sx={(theme) => ({
+            p: theme.spacing(1),
             display: 'flex',
             bgcolor: 'secondary.light',
             flexDirection: alignContent === 'right' ? 'row-reverse' : 'row',
@@ -77,11 +78,6 @@ function Promo(props) {
           </Box>
           <Avatar
             sx={(theme) => ({
-              ...(imageCircle && {
-                img: {
-                  borderRadius: '50%',
-                },
-              }),
               ...(!imageCircle && {
                 [theme.breakpoints.down('sm')]: {
                   width: '100%',
@@ -132,6 +128,7 @@ function Promo(props) {
                   '& picture, img, video': {
                     height: '100%',
                     ...(imageCircle && {
+                      aspectRatio: '1/1',
                       borderRadius: '50%',
                       width: 150,
                       height: 150,
