@@ -47,6 +47,10 @@ function TitleHero(props) {
             fontSize: '7rem',
             fontWeight: 500,
             lineHeight: '6rem',
+            [theme.breakpoints.down('sm')]: {
+              fontSize: '5.5rem',
+              lineHeight: '4.5rem',
+            },
           })}
           gutterBottom
         >
