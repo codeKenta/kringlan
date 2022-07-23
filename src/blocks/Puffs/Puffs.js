@@ -6,7 +6,7 @@ import { Box, Typography, Card, CardContent, Button } from '@mui/material'
 import { mediaType, linkType } from '~/api/utils'
 
 const PuffsRoot = styled('section', {
-  name: 'Hero',
+  name: 'Puffs',
   slot: 'Root',
 })(({ theme }) => ({
   padding: theme.spacing(5, 0),
@@ -40,7 +40,7 @@ const Avatar = styled('div')(({ theme }) => ({
   padding: theme.spacing(0),
   background: `radial-gradient(109.29% 109.29% at 49.88% -45.06%, #000000 0%, #BCB7B7 0.01%, #000000 0.02%, #BCB7B7 99.99%, #BCB7B7 100%),
   linear-gradient(0deg, rgba(196, 196, 196, 0), rgba(196, 196, 196, 0))
-  `,
+  `, // Border background
   borderRadius: '50%',
   height: 150,
   width: 150,
@@ -63,9 +63,10 @@ function Puffs(props) {
               alignItems: 'center',
               py: 3,
               maxWidth: 350,
+              mx: 1,
               justifyContent: 'center',
               '& img': {
-                p: 0.6,
+                p: '4px', // Adjusts the size of the border
                 aspectRatio: '1/1',
                 borderRadius: '50%',
                 margin: '0 auto',
