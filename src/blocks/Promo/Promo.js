@@ -6,9 +6,10 @@ import { Box, Typography, Card, CardContent } from '@mui/material'
 import { mediaType } from '~/api/utils'
 
 const PromoRoot = styled('section', {
-  name: 'Hero',
+  name: 'Promo',
   slot: 'Root',
 })(({ theme }) => ({
+  paddingTop: theme.spacing(1),
   position: 'relative',
   display: 'flex',
   flexDirection: 'column',
@@ -31,14 +32,14 @@ const PromoMain = styled('div', {
   paddingRight: 'var(--cia-container-spacing)',
 }))
 
-const Avatar = styled('div')(({ theme }) => ({
+const Avatar = styled('div')({
   flex: '1 0 auto',
   width: 250,
-  [theme.breakpoints.down('sm')]: {
-    width: '100%',
-    height: 150,
+  '& img, video': {
+    background: `radial-gradient(109.29% 109.29% at 49.88% -45.06%, #000000 0%, #BCB7B7 0.01%, #000000 0.02%, #BCB7B7 99.99%, #BCB7B7 100%),
+  linear-gradient(0deg, rgba(196, 196, 196, 0), rgba(196, 196, 196, 0))`,
   },
-}))
+})
 
 function Promo(props) {
   const { name, description, subtitle, mediaProps, alignContent = 'left', imageCircle } = props
@@ -74,7 +75,31 @@ function Promo(props) {
               <Typography>{description}</Typography>
             </CardContent>
           </Box>
-          <Avatar>
+          <Avatar
+            sx={(theme) => ({
+              ...(imageCircle && {
+                img: {
+                  borderRadius: '50%',
+                },
+              }),
+              ...(!imageCircle && {
+                [theme.breakpoints.down('sm')]: {
+                  width: '100%',
+                  height: 150,
+                },
+              }),
+
+              ...(mediaProps?.component === 'video' &&
+                imageCircle && {
+                  display: 'block',
+                  '& video': {
+                    width: 150,
+                    margin: '0 auto',
+                    padding: '5px',
+                  },
+                }),
+            })}
+          >
             {mediaProps?.src && (
               <Media
                 {...(mediaProps?.component === 'video'
@@ -89,30 +114,34 @@ function Promo(props) {
                 sx={(theme) => ({
                   flex: '1 0 auto',
                   width: 250,
+                  ...(mediaProps?.component === 'video' && {
+                    aspectRatio: '5/2',
+                  }),
                   ...(mediaProps?.component === 'video' &&
                     imageCircle && {
                       objectFit: 'fill',
                       borderRadius: '50%',
+
+                      aspectRatio: '1/1',
                     }),
-                  [theme.breakpoints.down('sm')]: {
-                    width: '100%',
-                  },
+                  ...(!imageCircle && {
+                    [theme.breakpoints.down('sm')]: {
+                      width: '100%',
+                    },
+                  }),
                   '& picture, img, video': {
                     height: '100%',
                     ...(imageCircle && {
-                      objectFit: 'cover',
                       borderRadius: '50%',
                       width: 150,
                       height: 150,
                       margin: '0 auto',
-                      border: '5px solid salmon',
+                      padding: '5px',
                     }),
-                    // objectFit: imageCircle ? 'contain' : 'cover',
-                    // clipPath: imageCircle ? `circle(${circleSettings})` : 0,
                     [theme.breakpoints.down('sm')]: {
                       height: 150,
-
-                      objectPosition: imageCircle ? 'top' : '0% 10%',
+                      objectPosition: '0% 10%',
+                      ...(mediaProps.component === 'video' && {}),
                     },
                   },
                 })}
