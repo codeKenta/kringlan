@@ -50,6 +50,13 @@ const Avatar = styled('div')(({ theme }) => ({
 function Puffs(props) {
   const { heading, headingType = 'h2', entries } = props
 
+  const mediaSettings = {
+    autoPlay: true,
+    muted: true,
+    loop: true,
+    playsInline: true,
+  }
+
   return (
     <PuffsRoot>
       <Typography variant="h3" component={headingType} sx={{ fontWeight: 'bold' }}>
@@ -63,17 +70,27 @@ function Puffs(props) {
               alignItems: 'center',
               py: 3,
               maxWidth: 350,
+              minWidth: 250,
               mx: 1,
               justifyContent: 'center',
-              '& img': {
-                p: '4px', // Adjusts the size of the border
+              '& img, video': {
+                p: '5px', // Adjusts the size of the border
                 aspectRatio: '1/1',
                 borderRadius: '50%',
                 margin: '0 auto',
               },
             }}
           >
-            <Avatar>{item.mediaProps && <Media {...item.mediaProps} />}</Avatar>
+            <Avatar>
+              {item.mediaProps && (
+                <Media
+                  {...(item.mediaProps.component === 'video'
+                    ? { ...mediaSettings }
+                    : { alt: `${item.title}` })}
+                  {...item.mediaProps}
+                />
+              )}
+            </Avatar>
 
             <Box>
               <CardContent sx={{ py: 4 }}>
